@@ -35,7 +35,7 @@ export default function UserPage() {
 
   const [filterName, setFilterName] = useState('');
 
-  const [rowsPerPage, setRowsPerPage] = useState(5);
+  const [rowsPerPage, setRowsPerPage] = useState(50);
 
   const handleSort = (event, id) => {
     const isAsc = orderBy === id && order === 'asc';
@@ -96,20 +96,20 @@ export default function UserPage() {
 
   return (
     <Container>
-      <Stack direction="row" alignItems="center" justifyContent="space-between" mb={5}>
-        <Typography variant="h4">Users</Typography>
+      <Stack direction="row" alignItems="center" justifyContent="space-between" mb={3}>
+        <Typography variant="h3">All Reviews</Typography>
 
-        <Button variant="contained" color="inherit" startIcon={<Iconify icon="eva:plus-fill" />}>
-          New User
+        <Button variant="contained" color="inherit" startIcon={<Iconify icon="line-md:download-loop" />}>
+          Download CSV
         </Button>
       </Stack>
 
       <Card>
-        <UserTableToolbar
+        {/* <UserTableToolbar
           numSelected={selected.length}
           filterName={filterName}
           onFilterName={handleFilterByName}
-        />
+        /> */}
 
         <Scrollbar>
           <TableContainer sx={{ overflow: 'unset' }}>
@@ -122,11 +122,11 @@ export default function UserPage() {
                 onRequestSort={handleSort}
                 onSelectAllClick={handleSelectAllClick}
                 headLabel={[
-                  { id: 'name', label: 'Name' },
-                  { id: 'company', label: 'Company' },
-                  { id: 'role', label: 'Role' },
-                  { id: 'isVerified', label: 'Verified', align: 'center' },
-                  { id: 'status', label: 'Status' },
+                  { id: 'number', label: 'Mobile Number' },
+                  { id: 'rating', label: 'Review' },
+                  { id: 'platform', label: 'Platform' },
+                  { id: 'location', label: 'Location', align: 'center' },
+                  { id: 'optin', label: 'Opted In' },
                   { id: '' },
                 ]}
               />
@@ -164,7 +164,7 @@ export default function UserPage() {
           count={users.length}
           rowsPerPage={rowsPerPage}
           onPageChange={handleChangePage}
-          rowsPerPageOptions={[5, 10, 25]}
+          rowsPerPageOptions={[50, 100, 250]}
           onRowsPerPageChange={handleChangeRowsPerPage}
         />
       </Card>

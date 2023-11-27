@@ -60,14 +60,14 @@ export default function Header({ onOpenNav }) {
         }),
         ...(lgUp && {
           width: `calc(100% - ${NAV.WIDTH + 1}px)`,
-          height: HEADER.H_DESKTOP,
+          height: HEADER.H_DESKTOP - 15,
         }),
       }}
     >
       <Toolbar
         sx={{
           height: 1,
-          px: { lg: 5 },
+          px: { lg: 4 },
         }}
       >
         {renderContent}

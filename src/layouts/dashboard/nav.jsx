@@ -53,9 +53,9 @@ export default function Nav({ openNav, onCloseNav }) {
       <Avatar src={account.photoURL} alt="photoURL" />
 
       <Box sx={{ ml: 2 }}>
-        <Typography variant="subtitle2">{account.displayName}</Typography>
+        <Typography variant="subtitle2" sx={{ color: 'white' }}>{account.displayName}</Typography>
 
-        <Typography variant="body2" sx={{ color: 'text.secondary' }}>
+        <Typography variant="body2" sx={{ color: 'white' }}>
           {account.role}
         </Typography>
       </Box>
@@ -63,7 +63,7 @@ export default function Nav({ openNav, onCloseNav }) {
   );
 
   const renderMenu = (
-    <Stack component="nav" spacing={0.5} sx={{ px: 2 }}>
+    <Stack component="nav" spacing={1} sx={{ px: 2 }}>
       {navConfig.map((item) => (
         <NavItem key={item.title} item={item} />
       ))}
@@ -80,10 +80,10 @@ export default function Nav({ openNav, onCloseNav }) {
         />
 
         <Box sx={{ textAlign: 'center' }}>
-          <Typography variant="h6">Get more?</Typography>
+          <Typography variant="h6" color="white">Got Questions?</Typography>
 
-          <Typography variant="body2" sx={{ color: 'text.secondary', mt: 1 }}>
-            From only $69
+          <Typography variant="body2" sx={{ color: 'white', mt: 1 }}>
+            Reach Out To Us!
           </Typography>
         </Box>
 
@@ -93,7 +93,7 @@ export default function Nav({ openNav, onCloseNav }) {
           variant="contained"
           color="inherit"
         >
-          Upgrade to Pro
+          Contact Us
         </Button>
       </Stack>
     </Box>
@@ -110,7 +110,7 @@ export default function Nav({ openNav, onCloseNav }) {
         },
       }}
     >
-      <Logo sx={{ mt: 3, ml: 4 }} />
+      <Logo sx={{ mt: 3, ml: 3 }} />
 
       {renderAccount}
 
@@ -135,6 +135,7 @@ export default function Nav({ openNav, onCloseNav }) {
             height: 1,
             position: 'fixed',
             width: NAV.WIDTH,
+            backgroundColor: "black",
             borderRight: (theme) => `dashed 1px ${theme.palette.divider}`,
           }}
         >
@@ -174,18 +175,21 @@ function NavItem({ item }) {
       component={RouterLink}
       href={item.path}
       sx={{
-        minHeight: 44,
+        minHeight: 65,
         borderRadius: 0.75,
         typography: 'body2',
-        color: 'text.secondary',
+        color: 'white',
         textTransform: 'capitalize',
         fontWeight: 'fontWeightMedium',
         ...(active && {
-          color: 'primary.main',
-          fontWeight: 'fontWeightSemiBold',
-          bgcolor: (theme) => alpha(theme.palette.primary.main, 0.08),
+          color: 'black',
+          fontWeight: 'Bold',
+          bgcolor: "white",
           '&:hover': {
-            bgcolor: (theme) => alpha(theme.palette.primary.main, 0.16),
+            bgcolor: "white",
+            color: "black",
+            borderWidth: '1px',
+            borderColor: 'grey',
           },
         }),
       }}
