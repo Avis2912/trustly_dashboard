@@ -9,8 +9,6 @@ import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
 import Iconify from 'src/components/iconify';
 
-import { products } from 'src/_mock/products';
-
 import ProductCard from '../product-card';
 import ProductSort from '../product-sort';
 import ProductFilters from '../product-filters';
@@ -33,11 +31,11 @@ export default function ProductsView() {
     <Container>
 
 <Stack justifyContent="space-between" direction="row" alignItems="center">
-      <Typography variant="h3" sx={{ mb: 4 }}>
-        Your Platform Links
+      <Typography variant="h3" sx={{ mb: 3 }}>
+        Platform Links
       </Typography>
-      <Button variant="contained" color="inherit"startIcon={<Iconify icon="gg:website" />}>
-           Request Extra</Button> </Stack>
+      <Button sx={{ mb: 3 }} target="_blank" href="https://tally.so/r/mBxLkR" variant="contained" color="inherit"startIcon={<Iconify icon="gg:website" />}>
+           Request Extra Platform</Button> </Stack>
 
 
     <Stack direction="row" spacing={3}>
@@ -50,13 +48,13 @@ export default function ProductsView() {
       borderRadius: '0px', borderBottomWidth: '4px', borderColor: 'black' }}>
       <Stack sx = {{ mt: 3.8, ml: 4 }} spacing={10.5} direction="row" alignItems="center">
     <Stack spacing={2} direction="row" alignItems="center">
-      <Iconify icon="cib:google" color="darkblue" height="20px"/>
+      <Iconify icon="cib:google" color="darkred" height="20px"/>
       <Typography fontFamily="serif" fontSize="23px" fontWeight="bold">
         Google </Typography></Stack>
         <Stack spacing={5} direction="row" alignItems="center">
       <Typography fontFamily="serif" fontSize="23px" fontWeight="medium">
         trustly.club/la57-google </Typography> 
-        <Button variant="contained" color="inherit"startIcon={<Iconify icon="ion:qr-code" />}>
+        <Button href="https://tally.so/r/3ExBQB" target="_blank" variant="contained" color="inherit"startIcon={<Iconify icon="ion:qr-code" />}>
            Order QR</Button> </Stack>
       </Stack>
 
@@ -72,7 +70,7 @@ export default function ProductsView() {
         <Stack spacing={7} direction="row" alignItems="center">
       <Typography fontFamily="serif" fontSize="23px" fontWeight="medium">
         trustly.club/la57-gpon </Typography> 
-        <Button variant="contained" color="inherit"startIcon={<Iconify icon="ion:qr-code" />}>
+        <Button href="https://tally.so/r/3ExBQB" variant="contained" target="_blank" color="inherit"startIcon={<Iconify icon="ion:qr-code" />}>
            Order QR</Button> </Stack>
       </Stack>
         </Card>
@@ -87,7 +85,7 @@ export default function ProductsView() {
         <Stack spacing={7.8} direction="row" alignItems="center">
       <Typography fontFamily="serif" fontSize="23px" fontWeight="medium">
         trustly.club/la57-yelp </Typography> 
-        <Button variant="contained" color="inherit"startIcon={<Iconify icon="ion:qr-code" />}>
+        <Button href="https://tally.so/r/3ExBQB" variant="contained" target="_blank" color="inherit"startIcon={<Iconify icon="ion:qr-code" />}>
            Order QR</Button> </Stack>
       </Stack>
         </Card>
@@ -102,7 +100,7 @@ export default function ProductsView() {
         <Stack spacing={6.6} direction="row" alignItems="center">
       <Typography fontFamily="serif" fontSize="23px" fontWeight="medium">
         trustly.club/la57-tpilot </Typography> 
-        <Button variant="contained" color="inherit"startIcon={<Iconify icon="ion:qr-code" />}>
+        <Button href="https://tally.so/r/3ExBQB" target="_blank" variant="contained" color="inherit"startIcon={<Iconify icon="ion:qr-code" />}>
            Order QR</Button> </Stack>
       </Stack>
         </Card>
@@ -115,7 +113,7 @@ export default function ProductsView() {
           
           <Stack justifyContent="space-between" direction="row" alignItems="center">
       <Typography fontFamily="serif" fontSize="28px" fontWeight="bold">
-        Add Links </Typography> 
+        Redirects </Typography> 
         <Button variant="contained" color="inherit"startIcon={<Iconify icon="carbon:save" />}>
            Save Changes</Button> 
            </Stack>

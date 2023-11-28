@@ -41,9 +41,9 @@ export default function Nav({ openNav, onCloseNav }) {
     <Box
       sx={{
         my: 3,
-        mx: 2.5,
+        mx: 2,
         py: 2,
-        px: 2.5,
+        px: 1.5,
         display: 'flex',
         borderRadius: 1.5,
         alignItems: 'center',
@@ -88,7 +88,7 @@ export default function Nav({ openNav, onCloseNav }) {
         </Box>
 
         <Button
-          href="https://material-ui.com/store/items/minimal-dashboard/"
+          href="https://tally.so/r/wMErRk"
           target="_blank"
           variant="contained"
           color="inherit"
@@ -176,7 +176,7 @@ function NavItem({ item }) {
       href={item.path}
       sx={{
         minHeight: 65,
-        borderRadius: 0.75,
+        borderRadius: 1,
         typography: 'body2',
         color: 'white',
         textTransform: 'capitalize',

@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import Box from '@mui/material/Box';
 import Link from '@mui/material/Link';
 import Card from '@mui/material/Card';
@@ -11,8 +12,6 @@ import LoadingButton from '@mui/lab/LoadingButton';
 import { alpha, useTheme } from '@mui/material/styles';
 import InputAdornment from '@mui/material/InputAdornment';
 
-import { getDoc, doc, setDoc, collection, query, where } from 'firebase/firestore';
-
 import { useRouter } from 'src/routes/hooks';
 
 import { bgGradient } from 'src/theme/css';
@@ -20,73 +19,40 @@ import { bgGradient } from 'src/theme/css';
 import Logo from 'src/components/logo';
 import Iconify from 'src/components/iconify';
 
-import { db, auth, googleProvider } from 'src/firebase-config/firebase';
-import { signInWithEmailAndPassword, signInWithPopup } from 'firebase/auth';
-import { useState, useEffect } from 'react';
+import { auth, googleProvider } from 'src/firebase-config/firebase';
+import { createUserWithEmailAndPassword, signInWithPopup } from 'firebase/auth';
 
-// import loginImage from '/assets/images/covers/cover_19.jpg';
 
-export default function LoginView() {
+export default function SignUpView() {
   const theme = useTheme();
   const router = useRouter();
   const [showPassword, setShowPassword] = useState(false);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleClick = () => {
-    router.push('/signup');
+  const GoToLogin = () => {
+    router.push('/login');
   };
 
-  const handleHome = () => {
-    router.push('/user');
+  const signUpWithGoogle = async () => {
+    try {
+      await signInWithPopup(auth, googleProvider);
+    } catch (err) {
+      alert('');
+      return;
+    }
+    router.push('/');
   };
 
-
-  const createBrandDocument = async (user) => {
-    const brandRef = doc(db, 'businesses', user.email);
-    const brandSnapshot = await getDoc(brandRef);
-
-    if (!brandSnapshot.exists()) {
-        const currentDate = new Date();
-        const formattedDate = `${currentDate.getDate()} ${currentDate.toLocaleString('default', { month: 'short' })}`;
-
-        await setDoc(brandRef, {
-            uid: user.uid,
-            email: user.email,
-            date_signed_up: formattedDate,
-            phone_number: '',
-            business_name: '',
-            location: '',
-            number_of_locations: 1,
-            industry: '',
-            links: {google: '', groupon: '', yelp: '', trustpilot: '', },
-        });
-    }
-}
-
-const signUpWithGoogle = async () => {
+  const SignUp = async () => {
     try {
-        const userCredential = await signInWithPopup(auth, googleProvider);
-        const user = userCredential.user;
-        await createBrandDocument(user);
+      await createUserWithEmailAndPassword(auth, email, password);
     } catch (err) {
-        alert(err);
-        return;
+      alert('Invalid entry. Password must be 6+ characters long.');
+      return;
     }
-    router.push('/user');
-};
-
-const SignIn = async () => {
-    try {
-        const userCredential = await signInWithEmailAndPassword(auth, email, password);
-        const user = userCredential.user;
-        await createBrandDocument(user);
-    } catch (err) {
-        alert('Invalid email / password');
-        return;
-    }
-    router.push('/user');
-};
+    router.push('/');
+  };
 
   const renderForm = (
     <>
@@ -118,21 +84,15 @@ const SignIn = async () => {
 
       <Stack direction="row" alignItems="center" justifyContent="flex-end" sx={{ my: 2 }} />
 
-      <Stack direction="row" alignItems="center" justifyContent="flex-end" sx={{ my: 3 }}>
-        <Link variant="subtitle2" underline="hover" onClick={handleClick}>
-          Forgot password?
-        </Link>
-      </Stack>
-
       <LoadingButton
         fullWidth
         size="large"
         type="submit"
         variant="contained"
         color="inherit"
-        onClick={SignIn}
+        onClick={SignUp}
       >
-        Login
+        Sign Up
       </LoadingButton>
     </>
   );
@@ -151,7 +111,6 @@ const SignIn = async () => {
           flex: 1,
           ...bgGradient({
             color: alpha(theme.palette.background.default, 0.9),
-            imgUrl: '/assets/background/overlay_4.jpg',
           }),
         }}
       >
@@ -174,11 +133,11 @@ const SignIn = async () => {
               maxWidth: 420,
             }}
           >
-            <Typography variant="h4">Sign in to Trustly</Typography>
+            <Typography variant="h4">Sign up for Pentra</Typography>
             <Typography variant="body2" sx={{ mt: 2, mb: 5 }}>
-              Don’t have an account?
-              <Link variant="subtitle2" sx={{ ml: 0.5 }} onClick={handleClick}>
-                Get started
+              Have an account?
+              <Link variant="subtitle2" sx={{ ml: 0.5 }} onClick={GoToLogin}>
+                Sign In
               </Link>
             </Typography>
             <Stack direction="row" spacing={2}>
@@ -211,8 +170,8 @@ const SignIn = async () => {
         }}
       >
         <img
-          src="/assets/images/covers/cover_19.jpg"
-          alt="Login"
+          src='/assets/images/covers/cover_7.jpg'
+          alt="SignUp"
           style={{ width: '100%', height: '100%', objectFit: 'cover' }}
         />
       </Box>

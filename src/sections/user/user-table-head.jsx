@@ -27,13 +27,13 @@ export default function UserTableHead({
   return (
     <TableHead>
       <TableRow>
-        <TableCell padding="checkbox">
+        {/* <TableCell padding="checkbox">
           <Checkbox
             indeterminate={numSelected > 0 && numSelected < rowCount}
             checked={rowCount > 0 && numSelected === rowCount}
             onChange={onSelectAllClick}
           />
-        </TableCell>
+        </TableCell> */}
 
         {headLabel.map((headCell) => (
           <TableCell
@@ -47,6 +47,7 @@ export default function UserTableHead({
               active={orderBy === headCell.id}
               direction={orderBy === headCell.id ? order : 'asc'}
               onClick={onSort(headCell.id)}
+              sx = {{ ml: headCell.label == "Mobile Number" ? 1.2 : 0, }}
             >
               {headCell.label}
               {orderBy === headCell.id ? (

@@ -15,12 +15,17 @@ const navConfig = [
   {
     title: 'Review Dashboard',
     path: '/user',
-    icon: icon('ic_user'),
+    icon: icon('ic_analytics'),
   },
   {
     title: 'Your Links',
     path: '/products',
     icon: icon('ic_cart'),
+  },
+  {
+    title: 'My Account',
+    path: '/account',
+    icon: icon('ic_user'),
   },
 ];
 
